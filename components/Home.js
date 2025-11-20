@@ -1,22 +1,20 @@
-import { useEffect, useState } from 'react';
-import { useSelector, useDispatch  } from 'react-redux';
-import { login, logout } from '../reducers/user';
-import LastTweets from './LastTweets';
-import Tweets from './Tweets';
-import Trends from './Trends';
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout } from "../reducers/user";
+import LastTweets from "./LastTweets";
+import Trends from "./Trends";
 //import styles from '';
 
 function Home() {
-
-    const user = useSelector((state) => state.user.value); 
-    const dispatch = useDispatch();
-    const [tweetText, setTweetText] = useState('');
-    const [tweets, setTweets] = useState([]);
+  const user = useSelector((state) => state.user.value);
+  const dispatch = useDispatch();
+  const [tweetText, setTweetText] = useState("");
+  const [tweets, setTweets] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/tweets')
-      .then(res => res.json())
-      .then(data => {
+    fetch("http://localhost:3000/tweets")
+      .then((res) => res.json())
+      .then((data) => {
         if (data.result) {
           setTweets(data.tweets);
         }
@@ -34,9 +32,7 @@ function Home() {
   // Extraire hashtags #
   const extractHashtags = (text) => {
     const words = text.split(/\s+/);
-    const tags = words
-      .filter(w => w.startsWith('#'))
-      .map(w => w.slice(1)); 
+    const tags = words.filter((w) => w.startsWith("#")).map((w) => w.slice(1));
     return tags;
   };
 
@@ -45,27 +41,27 @@ function Home() {
 
     const hashtags = extractHashtags(tweetText);
 
-    fetch('http://localhost:3000/tweet', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    fetch("http://localhost:3000/tweet", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         token: user.token,
         tweet: tweetText,
         hashtags,
       }),
-    })
+    });
   };
 
   const handleDelete = (tweetId) => {
     fetch(`http://localhost:3000/tweet/${tweetId}`, {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ token: user.token }),
     })
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         if (data.result) {
-          setTweets(prev => prev.filter(t => t._id !== tweetId));
+          setTweets((prev) => prev.filter((t) => t._id !== tweetId));
         }
       });
   };

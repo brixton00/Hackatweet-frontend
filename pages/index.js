@@ -1,5 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import Home from "./components/Home";
+
+// import Login from "../components/Login";
+import Home from "../components/Home";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -11,9 +13,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export default function Home() {
+export default function Index() {
   return (
     <>
+      {/* <Login /> */}
       <Home />
     </>
   );
