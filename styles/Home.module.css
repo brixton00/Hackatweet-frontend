@@ -1,0 +1,74 @@
+/* Le conteneur principal qui tient tout l'écran */
+.container {
+  display: flex;          /* C'est ICI que la magie opère : alignement horizontal */
+  flex-direction: row;    /* Alignement en ligne (par défaut avec flex) */
+  height: 100vh;          /* Prend 100% de la hauteur de la vue */
+  background-color: #15202b; /* Fond bleu nuit style Twitter */
+  color: white;           /* Texte blanc par défaut */
+  justify-content: center; /* Centre le contenu au milieu de l'écran */
+}
+
+/* Colonne de GAUCHE */
+.leftSection {
+  width: 250px;
+  padding: 20px;
+  border-right: 1px solid #38444d; /* Ligne de séparation grise */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Pousse le logout tout en bas */
+}
+
+/* Colonne du MILIEU */
+.middleSection {
+  width: 600px; /* Colonne plus large pour le contenu principal */
+  border-right: 1px solid #38444d;
+  padding: 0; /* Souvent le feed touche les bords */
+  overflow-y: scroll; /* Permet de scroller si beaucoup de tweets */
+}
+
+/* Colonne de DROITE */
+.rightSection {
+  width: 300px;
+  padding: 20px;
+  /* Pas de border-right ici car c'est la fin */
+}
+
+/* --- Juste un peu de style pour que ce soit lisible --- */
+
+.title {
+  padding: 15px;
+  margin: 0;
+  border-bottom: 1px solid #38444d;
+  font-family: sans-serif;
+}
+
+.createTweetContainer {
+  padding: 15px;
+  border-bottom: 10px solid #253341; /* Séparation épaisse sous l'input */
+}
+
+.input {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  outline: none;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.tweetBtn, .logoutBtn {
+  background-color: #1da1f2; /* Bleu Twitter */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 9999px; /* Bord très arrondis */
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.feed {
+  padding: 20px;
+  text-align: center;
+  color: #8899a6;
+}
