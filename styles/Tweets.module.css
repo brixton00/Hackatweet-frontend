@@ -1,0 +1,52 @@
+.tweetContainer {
+  display: flex;            /* Pour mettre avatar à côté du texte */
+  padding: 15px;
+  border-bottom: 1px solid #38444d; /* Ligne de séparation entre les tweets */
+  color: white;
+}
+
+.avatarSection {
+  margin-right: 15px;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;       /* Pour faire un rond parfait */
+  background-color: grey;   /* Juste au cas où l'image ne charge pas */
+}
+
+.contentSection {
+  width: 100%;
+}
+
+.header {
+  margin-bottom: 5px;
+}
+
+.name {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.username, .date {
+  color: #8899a6;          /* Gris clair pour les infos secondaires */
+  margin-right: 5px;
+}
+
+.text {
+  margin: 0 0 10px 0;      /* Un peu d'espace sous le texte */
+  font-size: 15px;
+  line-height: 1.3;        /* Espacement des lignes pour la lisibilité */
+}
+
+.icons {
+  display: flex;
+  gap: 20px;               /* Espace entre le coeur et la poubelle */
+  color: #8899a6;
+  cursor: pointer;
+}
+
+.icon:hover {
+  color: #1da1f2;          /* Changement de couleur au survol */
+}
